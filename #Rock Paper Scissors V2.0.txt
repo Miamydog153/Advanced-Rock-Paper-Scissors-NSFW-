@@ -1,0 +1,163 @@
+#Rock Paper Scissors V2.0 
+
+ 
+
+# 2 Players: Human (Input) and Computer (automated)  
+
+# Determine number of rounds (1, best 2/3, best 3/5, ...) 
+
+# Round: Each player chooses between Rock Paper and Scissors 
+
+    #Winner is determined: Rock beats scissors, scissors beat paper, paper beats rock. 
+
+    #Tie: play again. 
+
+ 
+
+from random import choice  
+
+from time import sleep 
+
+ 
+
+def instructions(): 
+
+     return """Welcome to Rock Paper Scissors! 
+
+ 
+
+    In this game you play against the computer. Each round you will choose either Rock, Paper, or Scissors. 
+
+    The computer will randomly select theirs too. 
+
+    The winner is determined as follows: Rock beats scissors, scissors beat paper, paper beats rock. 
+
+     
+
+    Good luck! 
+
+    """ 
+
+ 
+
+ 
+
+def full_name(player_choice): 
+
+ 
+
+    if player_choice == "R": 
+
+        return  "ROCK" 
+
+    elif player_choice == "P": 
+
+        return  "PAPER" 
+
+    else: 
+
+        return  "SCISSORS" 
+
+ 
+
+def main(): 
+
+     
+
+    print(instructions()) 
+
+    sleep(3) 
+
+     
+
+    computer_win = 0 
+
+    player_win = 0 
+
+    game_over = False 
+
+    while game_over == False: 
+
+         
+
+        print(f"Your Score: {player_win}   Computer score: {computer_win}") 
+
+         
+
+        player_choice = input("Choose R for rock, P for Paper and S for scissors").upper() 
+
+        print() 
+
+        rps_choices = ["R", "P", "S"] 
+
+        computer_choice = choice(rps_choices) 
+
+         
+
+        player_full = full_name(player_choice) 
+
+        computer_full = full_name(computer_choice) 
+
+        sleep(1) 
+
+        print(f"You chose {player_full}, the Computer chose {computer_full}") 
+
+        #Determine the winner  
+
+        print() 
+
+        #outcome 1: tie  
+
+        if player_choice == computer_choice: 
+
+            sleep(1) 
+
+            print("It's a tie.") 
+
+            sleep(1) 
+
+            print() 
+
+         
+
+        #human wins 
+
+     
+
+        elif (player_choice == "R" and computer_choice == "S") or (player_choice == "P" and computer_choice == "R") or (player_choice == "S" and computer_choice == "P"): 
+
+            sleep(1) 
+
+            print("You win, chopped chin.") 
+
+            player_win += 1 
+
+            sleep(1) 
+
+            print() 
+
+ 
+
+     
+
+        #Computer wins 
+
+         
+
+        else: 
+
+            sleep(1) 
+
+            print("You lose.") 
+
+            computer_win += 1  
+
+            sleep(1) 
+
+            print() 
+
+ 
+
+print(main()) 
+
+ 
